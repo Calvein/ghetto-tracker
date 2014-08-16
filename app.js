@@ -117,11 +117,13 @@ var Tracker = (function() {
             var time = self.projects[self.project][self.task]++
             var sec = time % 60
             var min = (time - sec) / 60
+            var hours = Math.round(min / 60)
+            min = min % 60
             // Formatting
             if (sec < 10) sec = '0' + sec
             if (min < 10) min = '0' + min
 
-            $timer.textContent = min + ':' + sec
+            $timer.textContent = hours + ':' + min + ':' + sec
             self.saveProjects()
         }, 1000)
     }
